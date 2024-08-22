@@ -7,7 +7,7 @@ x = 1
 while abs(np.sin(x)/np.cos(x)) > 0.01:
     x = x - np.sin(x)/np.cos(x)
     print(x, abs(np.sin(x)/np.cos(x)))
-
+print("result", x)
 '''
 -0.5574077246549021 0.6233441765797427
 0.06593645192484066 0.06603217384416574
