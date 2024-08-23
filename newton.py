@@ -1,7 +1,7 @@
 import numpy as np
 
 def func(x):
-    return np.cos(x)
+    return x + 1/x
 
 def first_order_deriv(x, eps=1e-4):
     """Calculate the first derivative."""
@@ -21,6 +21,7 @@ def newton(x, eps=1e-4, threshold=0.01):
 
     Keyword arguments:
     x -- the initial position
+    eps -- the step length for derivative
     threshold -- the threshold for the changing value to be small enough to terminate the iteration
     """
     if not eps > 0:
@@ -34,7 +35,6 @@ def newton(x, eps=1e-4, threshold=0.01):
         first_deriv = first_order_deriv(x, eps)
         second_deriv = second_order_deriv(x, eps)
     return x
-
 if __name__ == "__main__":
     print(newton(1))
     
