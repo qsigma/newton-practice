@@ -35,18 +35,21 @@ def grad(x, eps=1e-6):
         array[i] = first_partial(x, i, eps)
     return array
 
-def hessian_inv(x, eps=1e-6):
+def hessian(x, eps=1e-6):
     """Calculate the inv of Hessian matrix of given func and x."""
     matrix = np.zeros((len(x),len(x)))
     for i in range(len(x)):
         for j in range(len(x)):
             matrix[i][j] = second_partial(x, i, j, eps)
-    return np.linalg.inv(matrix)
+    return matrix
 
 def optimize(x, eps=1e-4, tol=1e-4):
     """x_{t+1} = x_t - H(x_t)^{-1} nabla f(x_t)"""
-    while np.linalg.norm(np.dot(hessian_inv(x, eps), grad(x,eps))) > tol:
-        x = x - np.dot(hessian_inv(x, eps), grad(x,eps))
+    while np.linalg.norm(x-np.linalg.solve(hessian(x, eps), grad(x,eps))) > tol:
+        x = x - np.linalg.solve(hessian(x, eps), grad(x,eps))
+    """
+    using solve may make it more robust.
+    """
     return x
 
 if __name__ == "__main__":
