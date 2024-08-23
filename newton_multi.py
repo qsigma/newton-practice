@@ -6,7 +6,7 @@ def func(x):
 
 def first_partial(x, i, eps=1e-6):
     """
-    Calculate the first partial of func r.w.t. given index
+    Calculate the first partial of func w.r.t. given index
 
     x -- the position to take the partial
     i -- the given index; no bigger than len(x)
@@ -19,7 +19,7 @@ def first_partial(x, i, eps=1e-6):
 
 def second_partial(x, i, j, eps=1e-6):
     """
-    Calculate the second partial of func r.w.t. two given indices.
+    Calculate the second partial of func w.r.t. two given indices.
     """
     x0 = x
     x1 = x.copy()
